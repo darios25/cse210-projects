@@ -8,7 +8,7 @@ public class PromptGenerator
         "Who was the most interesting person I interacted with today?",
         "What was the best moment of my day?",
         "How did I see the Lord's hand in my life today?",
-        "What was the strongest emotion I felt today?",
+        "What was the best activity I did today?",
         "If I could do one thing today, what would it be?"
     };
 

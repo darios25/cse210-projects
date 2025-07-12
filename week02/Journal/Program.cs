@@ -9,8 +9,8 @@ class Program
 
         bool running = true;
 
-        //  Requirements met: Save in Excel-compatible CSV format
-        //  Creativity: managing quotation marks in content, displaying with timestamp
+        //  Requirements met: Save in Excel-compatible CSV format.
+        //  Creativity: managing quotation marks in content, displaying with timestamp.
 
         while (running)
         {

@@ -21,21 +21,20 @@ public class Entry
         Console.WriteLine();
     }
 
-    public string ToFileString()
+    public string ToCsv()
     {
-        return $"{_date}|{_prompt}|{_response}";
+        return $"\"{_date}\",\"{_prompt.Replace("\"", "\"\"")}\",\"{_response.Replace("\"", "\"\"")}\"";
     }
 
-    public static Entry FromFileString(string line)
+    public static Entry FromCsv(string line)
     {
-        string[] parts = line.Split('|');
-        if (parts.Length == 3)
-        {
-            Entry entry = new Entry(parts[1], parts[2]);
-            entry._date = parts[0];
-            return entry;
-        }
-        return null;
+        var parts = line.Split("\",\"");
+        string date = parts[0].Trim('"');
+        string prompt = parts[1].Trim('"');
+        string response = parts[2].Trim('"');
+        return new Entry(prompt, response) { _date = date };
     }
 }
+
+
 

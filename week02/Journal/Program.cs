@@ -9,8 +9,8 @@ class Program
 
         bool running = true;
 
-        // Superamento requisiti: salvataggio in formato CSV compatibile con Excel
-        // Creatività: gestione virgolette nel contenuto, visualizzazione con timestamp
+        // Requirements met: Save in Excel-compatible CSV format
+        // Creativity: Manage quotation marks in content, display with timestamp
 
         while (running)
         {

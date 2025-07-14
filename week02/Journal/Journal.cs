@@ -1,10 +1,12 @@
+
+
 using System;
 using System.Collections.Generic;
 using System.IO;
 
 public class Journal
 {
-    public List<Entry> _entries = new List<Entry>();
+    private List<Entry> _entries = new List<Entry>();
 
     public void AddEntry(Entry entry)
     {
@@ -13,9 +15,16 @@ public class Journal
 
     public void Display()
     {
-        foreach (Entry entry in _entries)
+        if (_entries.Count == 0)
         {
-            entry.Display();
+            Console.WriteLine("Il diario è vuoto.");
+        }
+        else
+        {
+            foreach (Entry entry in _entries)
+            {
+                entry.Display();
+            }
         }
     }
 
@@ -25,19 +34,30 @@ public class Journal
         {
             foreach (Entry entry in _entries)
             {
-                writer.WriteLine(entry.ToCsv());
+                writer.WriteLine(entry.ToFileString());
             }
         }
     }
 
     public void LoadFromFile(string filename)
     {
-        _entries.Clear();
-        foreach (string line in File.ReadAllLines(filename))
+        if (File.Exists(filename))
         {
-            _entries.Add(Entry.FromCsv(line));
+            _entries.Clear();
+            string[] lines = File.ReadAllLines(filename);
+            foreach (string line in lines)
+            {
+                Entry entry = Entry.FromFileString(line);
+                if (entry != null)
+                {
+                    _entries.Add(entry);
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("File non trovato.");
         }
     }
 }
-
 

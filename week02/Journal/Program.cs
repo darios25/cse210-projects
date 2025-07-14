@@ -6,62 +6,70 @@ class Program
     {
         Journal myJournal = new Journal();
         PromptGenerator promptGen = new PromptGenerator();
-
         bool running = true;
 
-        //  Requirements met: Save in Excel-compatible CSV format.
-        //  Creativity: managing quotation marks in content, displaying with timestamp.
+        // ✅ Estensione creativa:
+        // - Uso di separatore personalizzato per evitare problemi con virgole
+        // - Visualizzazione con timestamp
+        // - Gestione file robusta con controllo esistenza
+        // - Interfaccia semplice e chiara
 
         while (running)
         {
-            Console.WriteLine("Journal Menu:");
-            Console.WriteLine("1. Write a new entry");
-            Console.WriteLine("2. Display the journal");
-            Console.WriteLine("3. Save the journal to a file");
-            Console.WriteLine("4. Load the journal from a file");
-            Console.WriteLine("5. Exit");
-            Console.Write("Choose an option: ");
+            Console.WriteLine("╔══════════════════════════════╗");
+            Console.WriteLine("║         Journal Menu         ║");
+            Console.WriteLine("╠══════════════════════════════╣");
+            Console.WriteLine("║ 1. Scrivi una nuova voce     ║");
+            Console.WriteLine("║ 2. Visualizza il diario      ║");
+            Console.WriteLine("║ 3. Salva il diario su file   ║");
+            Console.WriteLine("║ 4. Carica diario da file     ║");
+            Console.WriteLine("║ 5. Esci                      ║");
+            Console.WriteLine("╚══════════════════════════════╝");
+            Console.Write("Scegli un'opzione: ");
             string choice = Console.ReadLine();
 
             switch (choice)
             {
                 case "1":
                     string prompt = promptGen.GetRandomPrompt();
-                    Console.WriteLine($"Prompt: {prompt}");
-                    Console.Write("Your response: ");
+                    Console.WriteLine($"\nPrompt: {prompt}");
+                    Console.Write("Risposta: ");
                     string response = Console.ReadLine();
                     Entry newEntry = new Entry(prompt, response);
                     myJournal.AddEntry(newEntry);
+                    Console.WriteLine("Voce aggiunta!\n");
                     break;
 
                 case "2":
+                    Console.WriteLine("\n--- Diario ---");
                     myJournal.Display();
                     break;
 
                 case "3":
-                    Console.Write("Enter filename to save: ");
+                    Console.Write("Nome del file per il salvataggio: ");
                     string saveFile = Console.ReadLine();
                     myJournal.SaveToFile(saveFile);
-                    Console.WriteLine("Journal saved.");
+                    Console.WriteLine("Diario salvato.\n");
                     break;
 
                 case "4":
-                    Console.Write("Enter filename to load: ");
+                    Console.Write("Nome del file da caricare: ");
                     string loadFile = Console.ReadLine();
                     myJournal.LoadFromFile(loadFile);
-                    Console.WriteLine("Journal loaded.");
+                    Console.WriteLine("Diario caricato.\n");
                     break;
 
                 case "5":
                     running = false;
+                    Console.WriteLine("Arrivederci!");
                     break;
 
                 default:
-                    Console.WriteLine("Invalid option. Try again.");
+                    Console.WriteLine("Opzione non valida. Riprova.\n");
                     break;
             }
-
-            Console.WriteLine();
         }
+
+
     }
 }

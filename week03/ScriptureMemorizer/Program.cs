@@ -1,3 +1,4 @@
+// Author: Dario Giaccone
 // This program meets all the basic requirements and has features beyond the basic requirements:
 // - Handles verse ranges
 // - Hides only visible words
@@ -35,3 +36,5 @@ class Program
 
     }
 }
+
+

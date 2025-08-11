@@ -1,0 +1,4 @@
+SimpleGoal|[ ] Corri una maratona (Completa una maratona)
+EternalGoal|[∞] Leggi le Scritture (Ogni giorno)
+ChecklistGoal|[ ] Vai al tempio (10 volte) -- Completed 0/10 times
+Points:100
